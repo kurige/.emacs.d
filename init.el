@@ -3,7 +3,7 @@
 ;; Common lisp goodies, loop
 (require 'cl)
 
-;; ELPA packages
+;; elpa packages
 ;; -------------
 
 (require 'package)
@@ -64,6 +64,7 @@ el-get-sources
 (setq
  my:el-get-packages
  '(el-get         ; el-get is self-hosting
+   psvn           ; SVN mode
    escreen        ; Screen for emacs, "C-\ C-h"
    switch-window  ; Takes over "C-x o"
    auto-complete  ; Complete as you type, using overlays
@@ -194,6 +195,12 @@ el-get-sources
 (require 'org-latex)
 (unless (boundp 'org-export-latex-classes)
   (setq org-export-latex-classes nil))
+
+;; Expand text based on text already in buffers using TAB
+(global-set-key "\M- " 'hippie-expand)
+
+;; Will allow you to type just "y" instead of "yes" when you exit
+(fset 'yes-or-no-p 'y-or-n-p)
 
 ;; To specify a specific LaTeX class, add the following to the top of your org file:
 ;;   #LaTeX_CLASS: <class>
